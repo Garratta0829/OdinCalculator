@@ -1,0 +1,204 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 710px;
+    width: 500px;
+    margin-top: 150px;
+    background-color: rgb(149, 60, 0);
+    border-radius: 50px;
+    position: relative;
+
+}
+
+.reflection {
+    position: absolute;
+    background-color: white;
+    height: 350px;
+    width: 300px;
+    transform: skew(-20deg);
+    top: -65px;
+    left: -130px;
+    opacity: .45;
+    filter: blur(3px);
+    z-index: 2;
+
+}
+
+.reflection-2 {
+    position: absolute;
+    height: 22px;
+    width: 7px;
+    background-color: rgb(255, 193, 111);
+    /* border: 1px solid black; */
+    z-index: 3;
+    transform: skew(30deg);
+    filter: blur(3px);
+    top: 235px;
+    right: 45px;
+
+
+}
+
+.reflection-3 {
+    position: absolute;
+    background-color: rgb(255, 192, 109);
+    height: 65px;
+    width: 13px;
+    filter: blur(2px);
+    right: 37px;
+    top: 145px;
+    z-index: 3;
+    /* border: 1px solid black; */
+}
+
+
+
+
+.top-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(245, 159, 0);
+    border: 2px solid rgb(149, 79, 0);
+    width: 98%;
+    height: 40%;
+    margin-top: 5px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    /* position: relative; */
+}
+
+.top-section-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+.header {
+    color: white;
+    font-size: 2.2rem;
+}
+
+.solar-panel {
+    display: flex;
+    width: 190px;
+    height: 65%;
+    
+}
+
+.solar-panel-cell {
+    background-color: rgb(66, 66, 66);
+    border: 1px solid rgb(84, 84, 84);
+    width: 25%;
+    height: 100%;
+    border-radius: 1px;
+}
+
+.screen {
+    height: 30%;
+    width: 80%;
+    border-top: 12px solid rgb(227, 137, 35);
+    border-bottom: 25px solid rgb(222, 103, 12);
+    /* border-bottom: 25px solid linear-gradient(rgb(223, 126, 16) 80%, rgb(218, 98, 0) ) ; */
+    border-left: 18px solid rgb(149, 60, 0);
+    border-right: 18px solid rgb(227, 137, 35);
+    box-shadow: inset 3px 3px 5px rgb(147, 148, 138);
+    box-shadow: inset -3px -3px 8px rgb(147, 148, 138);
+    background-color: rgb(178, 179, 167);
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.top-screen {
+    height: 30%;
+    text-align: end;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.bottom-screen {
+    height: 70%;
+    font-size: 3rem;
+    text-align: end;
+    margin-right: 10px;
+    padding-bottom: 5px;
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+    background-image: linear-gradient(to right, rgb(255, 171, 61) 45%, rgb(166, 62, 6));
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    transform: skew(-1deg),
+               translate(-5px);
+    
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    /* background-color: rgb(245, 159, 0); */
+    height: 90%;
+    width: 90%;
+    margin-left: 15px;
+    z-index: 1;
+    
+}
+
+
+
+button {
+    /* width: 80px;
+    height: 60px; */
+    height: 80%;
+    width: 70%;;
+    background-color: rgb(249, 127, 61);
+    color: white;
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 10%;
+    border: 1px solid black;
+    box-shadow: 2px 3px 3px black;
+    gap: 10px;
+}
+
+#add {
+    /* height: 120px; */
+    grid-row: 4 / 6;
+    grid-column: 4 / 5;
+    height: 90%;
+    /* grid-column: span; */
+    
+}
+
+#equal {
+    /* grid-column: 3 / 5; */
+}
+
+/* button:nth-child(16) {
+    grid-row: 4/6;
+    grid-column: 4/5;
+    height: 60px;
+    
+} */
+
