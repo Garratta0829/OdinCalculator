@@ -15,8 +15,9 @@ body {
     height: 710px;
     width: 500px;
     margin-top: 150px;
-    background-color: rgb(149, 60, 0);
+    background-color: rgb(166, 62, 6);
     border-radius: 50px;
+    border-bottom: 6px solid rgb(134, 57, 5);
     position: relative;
 
 }
@@ -75,6 +76,7 @@ body {
     width: 98%;
     height: 40%;
     margin-top: 5px;
+    border: 2px solid rgb(134, 57, 5);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     /* position: relative; */
@@ -148,8 +150,7 @@ body {
     background-image: linear-gradient(to right, rgb(255, 171, 61) 45%, rgb(166, 62, 6));
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    transform: skew(-1deg),
-               translate(-5px);
+    /* transform: skew(-1deg) translate(-5px); */
     
 }
 
@@ -180,6 +181,11 @@ button {
     border: 1px solid black;
     box-shadow: 2px 3px 3px black;
     gap: 10px;
+}
+
+button:first-child {
+    color: rgb(249, 127, 61);
+    background-color: white;
 }
 
 #add {
