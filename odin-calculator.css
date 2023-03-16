@@ -118,12 +118,17 @@ body {
     /* border-bottom: 25px solid linear-gradient(rgb(223, 126, 16) 80%, rgb(218, 98, 0) ) ; */
     border-left: 18px solid rgb(149, 60, 0);
     border-right: 18px solid rgb(227, 137, 35);
-    box-shadow: inset 3px 3px 5px rgb(147, 148, 138);
+    /* box-shadow: inset 3px 3px 5px rgb(147, 148, 138); */
     box-shadow: inset -3px -3px 8px rgb(147, 148, 138);
     background-color: rgb(178, 179, 167);
     border-radius: 10px;
     text-align: center;
 
+}
+
+.screen::before {
+    box-shadow: 3px 3px 5px rgb(147, 148, 138);
+    /* box-shadow: -3px -3px 8px rgb(147, 148, 138); */
 }
 
 .top-screen {
