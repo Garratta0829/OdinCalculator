@@ -3,8 +3,6 @@ body {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    
-
 }
 
 .container {
@@ -19,7 +17,6 @@ body {
     border-radius: 50px;
     border-bottom: 6px solid rgb(134, 57, 5);
     position: relative;
-
 }
 
 .reflection {
@@ -33,7 +30,6 @@ body {
     opacity: .45;
     filter: blur(3px);
     z-index: 2;
-
 }
 
 .reflection-2 {
@@ -47,8 +43,6 @@ body {
     filter: blur(3px);
     top: 235px;
     right: 45px;
-
-
 }
 
 .reflection-3 {
@@ -60,11 +54,7 @@ body {
     right: 37px;
     top: 145px;
     z-index: 3;
-    /* border: 1px solid black; */
 }
-
-
-
 
 .top-section {
     display: flex;
@@ -79,7 +69,6 @@ body {
     border: 2px solid rgb(134, 57, 5);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
-    /* position: relative; */
 }
 
 .top-section-top {
@@ -99,7 +88,6 @@ body {
     display: flex;
     width: 190px;
     height: 65%;
-    
 }
 
 .solar-panel-cell {
@@ -115,15 +103,12 @@ body {
     width: 80%;
     border-top: 12px solid rgb(227, 137, 35);
     border-bottom: 25px solid rgb(222, 103, 12);
-    /* border-bottom: 25px solid linear-gradient(rgb(223, 126, 16) 80%, rgb(218, 98, 0) ) ; */
     border-left: 18px solid rgb(149, 60, 0);
     border-right: 18px solid rgb(227, 137, 35);
-    /* box-shadow: inset 3px 3px 5px rgb(147, 148, 138); */
     box-shadow: inset -3px -3px 8px rgb(147, 148, 138);
     background-color: rgb(178, 179, 167);
     border-radius: 10px;
     text-align: center;
-
 }
 
 .screen::before {
@@ -156,7 +141,6 @@ body {
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     /* transform: skew(-1deg) translate(-5px); */
-    
 }
 
 .keypad {
@@ -168,14 +152,9 @@ body {
     width: 90%;
     margin-left: 15px;
     z-index: 1;
-    
 }
 
-
-
 button {
-    /* width: 80px;
-    height: 60px; */
     height: 80%;
     width: 70%;;
     background-color: rgb(249, 127, 61);
@@ -195,23 +174,21 @@ button:first-child {
     width: 85%;
 }
 
+.operator {
+    background-color: rgb(240, 97, 8);
+}
+
+.column-three {
+    background-color: rgb(246, 111, 34);
+}
+
+.column-two {
+    background-color: rgb(255, 128, 55);
+}
+
 #add {
-    /* height: 120px; */
     grid-row: 4 / 6;
     grid-column: 4 / 5;
     height: 90%;
-    /* grid-column: span; */
-    
 }
-
-#equal {
-    /* grid-column: 3 / 5; */
-}
-
-/* button:nth-child(16) {
-    grid-row: 4/6;
-    grid-column: 4/5;
-    height: 60px;
-    
-} */
 

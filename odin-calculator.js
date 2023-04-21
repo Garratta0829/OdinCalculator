@@ -40,7 +40,7 @@ operands.forEach(button => button.addEventListener('click', () => {
 operators.forEach(op => op.addEventListener('click', () => {
     
     if (result != undefined) {
-        bottomScreen.textContent = result
+        bottomScreen.textContent = roundNumber(result)
         currentValue = result
     }
     
@@ -48,11 +48,8 @@ operators.forEach(op => op.addEventListener('click', () => {
     operator = op.innerHTML
     topScreen.textContent += ' ' + operator + ' '
     num1 = ''
-    // console.log(currentValue)
     
 }))
-
-
 
 
 decimal.addEventListener('click', () => {
@@ -69,11 +66,10 @@ decimal.addEventListener('click', () => {
 })
 
 
-
 equalButton.addEventListener('click', () => {
     
     topScreen.textContent += ' ='
-    bottomScreen.textContent = result
+    bottomScreen.textContent = roundNumber(result)
     currentValue = result
 
 })
@@ -87,12 +83,10 @@ clearButton.addEventListener('click', () => {
     operatorPressed = false;
 })
 
-
-function resetOperation() {
-    // num1 = ''
-    // num2 = ''
-    operatorPressed = false
+function roundNumber(num) {
+    return Math.round(num * 10000) / 10000
 }
+
 
 function add(num1, num2) {
     // console.log(a + b) 
@@ -116,23 +110,9 @@ function subtract(num1, num2) {
 
 
 function operate(operator, currentValue, num1) {
-    // num1 = parseInt(num1)
-    // num2 = parseInt(num2)
-    
-    // if (operator === '+') {
-    //     currentValue += num1
-    //     console.log(currentValue)
-    //     return currentValue
-
-    // } else if (currentValue === '-') {
-    //     currentValue -= num1
-    //     console.log(currentValue)
-    //     return currentValue
-    // }
 
     switch (operator) {
         case '+':
-           
             result = currentValue + num1
             
             break;
@@ -160,4 +140,3 @@ function operate(operator, currentValue, num1) {
     }
 }
 
-// operate(operator, currentValue, num1)
