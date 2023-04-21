@@ -5,34 +5,20 @@ const topScreen = document.querySelector('.top-screen')
 const equalButton = document.querySelector('.equal')
 const clearButton = document.querySelector('.clear')
 const decimal = document.querySelector('.decimal')
-let operand
 let operator
 let num1 = ''
-let num2 = ''
 let currentValue = ''
 let operatorPressed = false;
-let equalPressed = false;
 let result
-let currentValueInit = false
-
-
 
 
 
 operands.forEach(button => button.addEventListener('click', () => {
-
-    // num2 += button.textContent
-    // num2 = parseInt(num2)
-    // bottomScreen.textContent = num2
-    // topScreen.textContent = num2
-    // console.log(num2)
-    
-
     
     if (operatorPressed === false) {
     
         currentValue += button.innerHTML
-        currentValue = parseInt(currentValue)
+        currentValue = parseFloat(currentValue)
         bottomScreen.textContent += button.innerHTML
         topScreen.textContent += button.innerHTML
         console.log(currentValue)
@@ -41,12 +27,11 @@ operands.forEach(button => button.addEventListener('click', () => {
         
         bottomScreen.textContent = ''
         num1 += button.innerHTML
-        num1 = parseInt(num1)
+        num1 = parseFloat(num1)
         operate(operator, currentValue, num1)
         // console.log(currentValue)
         bottomScreen.textContent += num1
         topScreen.textContent += button.innerHTML
-       
     }
 
 }))
@@ -54,33 +39,17 @@ operands.forEach(button => button.addEventListener('click', () => {
 
 operators.forEach(op => op.addEventListener('click', () => {
     
-    // num1 = num2
-    // num2 = ''
-    // console.log(num1)
-    // console.log(num2)
-
-    // if (num1 != '') {
-    //     operate(operator, currentValue, num1)
-    //     bottomScreen.textContent = currentValue
-        
-    // }
     if (result != undefined) {
         bottomScreen.textContent = result
         currentValue = result
     }
     
-
-
-
     operatorPressed = true
     operator = op.innerHTML
-    topScreen.textContent += operator
-    // bottomScreen.textContent = currentValue
+    topScreen.textContent += ' ' + operator + ' '
     num1 = ''
     // console.log(currentValue)
     
-
-
 }))
 
 
@@ -88,15 +57,12 @@ operators.forEach(op => op.addEventListener('click', () => {
 
 decimal.addEventListener('click', () => {
     
-    
-    
-    
     if (operatorPressed === false) {
-        parseFloat(num1 += decimal.innerHTML)
+        currentValue += decimal.innerHTML
         bottomScreen.textContent += decimal.innerHTML
         topScreen.textContent += decimal.innerHTML
     } else if (operatorPressed === true) {
-        parseFloat(num2 += decimal.innerHTML)
+        num1 += decimal.innerHTML
         bottomScreen.textContent += decimal.innerHTML
         topScreen.textContent += decimal.innerHTML
     }
@@ -106,11 +72,9 @@ decimal.addEventListener('click', () => {
 
 equalButton.addEventListener('click', () => {
     
+    topScreen.textContent += ' ='
     bottomScreen.textContent = result
     currentValue = result
-    // operate(operator, currentValue, num1)
-    // bottomScreen.innerHTML = result
-    // console.log(result)
 
 })
 
@@ -119,6 +83,7 @@ clearButton.addEventListener('click', () => {
     bottomScreen.innerHTML = ''
     num1 = ''
     currentValue = ''
+    result = ''
     operatorPressed = false;
 })
 
@@ -186,9 +151,13 @@ function operate(operator, currentValue, num1) {
             console.log(currentValue)
 
             break;
+        case '^':
+            result = Math.pow(currentValue, num1)
+            console.log(currentValue)
+
         default:
             console.log('')
     }
 }
 
-operate(operator, currentValue, num1)
+// operate(operator, currentValue, num1)

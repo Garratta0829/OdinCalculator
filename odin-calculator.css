@@ -191,6 +191,8 @@ button {
 button:first-child {
     color: rgb(249, 127, 61);
     background-color: white;
+    grid-column: 1 / 3;
+    width: 85%;
 }
 
 #add {
