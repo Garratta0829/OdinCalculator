@@ -9,29 +9,44 @@ let operand
 let operator
 let num1 = ''
 let num2 = ''
-let currentValue = 0
+let currentValue = ''
 let operatorPressed = false;
 let equalPressed = false;
 let result
+let currentValueInit = false
+
+
+
 
 
 operands.forEach(button => button.addEventListener('click', () => {
 
+    // num2 += button.textContent
+    // num2 = parseInt(num2)
+    // bottomScreen.textContent = num2
+    // topScreen.textContent = num2
+    // console.log(num2)
+    
+
+    
     if (operatorPressed === false) {
-        num1 += button.innerHTML
-        num1 = parseInt(num1)
+    
+        currentValue += button.innerHTML
+        currentValue = parseInt(currentValue)
         bottomScreen.textContent += button.innerHTML
         topScreen.textContent += button.innerHTML
-        // console.log(num1)
+        console.log(currentValue)
+        
     } else if (operatorPressed === true) {
+        
         bottomScreen.textContent = ''
-        num1 = ''
         num1 += button.innerHTML
         num1 = parseInt(num1)
-        // console.log(num1)
-        bottomScreen.textContent = button.innerHTML
+        operate(operator, currentValue, num1)
+        // console.log(currentValue)
+        bottomScreen.textContent += num1
         topScreen.textContent += button.innerHTML
-        operatorPressed = false
+       
     }
 
 }))
@@ -39,23 +54,43 @@ operands.forEach(button => button.addEventListener('click', () => {
 
 operators.forEach(op => op.addEventListener('click', () => {
     
+    // num1 = num2
+    // num2 = ''
+    // console.log(num1)
+    // console.log(num2)
+
+    // if (num1 != '') {
+    //     operate(operator, currentValue, num1)
+    //     bottomScreen.textContent = currentValue
+        
+    // }
+    if (result != undefined) {
+        bottomScreen.textContent = result
+        currentValue = result
+    }
+    
+
+
+
     operatorPressed = true
- 
     operator = op.innerHTML
     topScreen.textContent += operator
-    currentValue += parseInt(num1)
-
-    // if (num2pressed = true) {
-    //     currentValue += num2
-    // }
-    console.log(currentValue)
-    console.log(num1)
+    // bottomScreen.textContent = currentValue
+    num1 = ''
+    // console.log(currentValue)
+    
 
 
 }))
 
 
+
+
 decimal.addEventListener('click', () => {
+    
+    
+    
+    
     if (operatorPressed === false) {
         parseFloat(num1 += decimal.innerHTML)
         bottomScreen.textContent += decimal.innerHTML
@@ -71,9 +106,11 @@ decimal.addEventListener('click', () => {
 
 equalButton.addEventListener('click', () => {
     
-    operate(operator, currentValue, num1)
-    bottomScreen.innerHTML = result
-    console.log(result)
+    bottomScreen.textContent = result
+    currentValue = result
+    // operate(operator, currentValue, num1)
+    // bottomScreen.innerHTML = result
+    // console.log(result)
 
 })
 
@@ -81,7 +118,7 @@ clearButton.addEventListener('click', () => {
     topScreen.innerHTML = ''
     bottomScreen.innerHTML = ''
     num1 = ''
-    num2 = ''
+    currentValue = ''
     operatorPressed = false;
 })
 
@@ -117,42 +154,41 @@ function operate(operator, currentValue, num1) {
     // num1 = parseInt(num1)
     // num2 = parseInt(num2)
     
+    // if (operator === '+') {
+    //     currentValue += num1
+    //     console.log(currentValue)
+    //     return currentValue
+
+    // } else if (currentValue === '-') {
+    //     currentValue -= num1
+    //     console.log(currentValue)
+    //     return currentValue
+    // }
+
     switch (operator) {
         case '+':
-            // return num1 + num2;
-            // currentValue += num1 + num2
-            // bottomScreen.innerHTML = num1 + num2
-            // num1 += num2
+           
             result = currentValue + num1
-            return result
-            console.log(num1)
-            // console.log(result)
-            // console.log(num2)
-            // resetOperation()
-            // num1 = ''
-            // num2 = ''
-            // bottomScreen.textContent = result
-            // topScreen.textContent += num
-            // console.log(num1)
+            
             break;
         case '-':
-            bottomScreen.innerHTML = num1 - num2
-            // return subtract(num1, num2);
+            result = currentValue - num1
+            console.log(currentValue)
+
             break;
         case '*':
-            bottomScreen.innerHTML = num1 * num2
-            // return multiply(num1, num2);
+            result = currentValue * num1
+            console.log(currentValue)
+
             break;
         case '/':
-            bottomScreen.innerHTML = num1 / num2
-            // return divide(num1, num2);
+            result = currentValue / num1
+            console.log(currentValue)
+
             break;
         default:
-            console.log('blah blah blah')
+            console.log('')
     }
-    
- 
 }
 
-
-
+operate(operator, currentValue, num1)
