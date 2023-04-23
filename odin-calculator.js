@@ -5,6 +5,7 @@ const topScreen = document.querySelector('.top-screen')
 const equalButton = document.querySelector('.equal')
 const clearButton = document.querySelector('.clear')
 const decimal = document.querySelector('.decimal')
+const backspace = document.getElementById('backspace')
 let operator
 let num1 = ''
 let currentValue = ''
@@ -29,7 +30,7 @@ operands.forEach(button => button.addEventListener('click', () => {
         num1 += button.innerHTML
         num1 = parseFloat(num1)
         operate(operator, currentValue, num1)
-        // console.log(currentValue)
+        console.log(num1)
         bottomScreen.textContent += num1
         topScreen.textContent += button.innerHTML
     }
@@ -38,32 +39,69 @@ operands.forEach(button => button.addEventListener('click', () => {
 
 
 operators.forEach(op => op.addEventListener('click', () => {
-    
+    // currentValue = currentValue.toString()
+    // num1 = num1.toString()
+
+    operator = op.innerHTML
+
+    if (!topScreen.textContent.endsWith(operator)) {
+        topScreen.textContent += ' ' + operator + ' '
+    }
+
+
     if (result != undefined) {
         bottomScreen.textContent = roundNumber(result)
         currentValue = result
     }
     
     operatorPressed = true
-    operator = op.innerHTML
-    topScreen.textContent += ' ' + operator + ' '
+    // operator = op.innerHTML
+    // topScreen.textContent += ' ' + operator + ' '
     num1 = ''
     
 }))
 
+backspace.addEventListener('click', () => {
+
+    if (operatorPressed === false) {
+        currentValue = parseFloat(currentValue.toString().slice(0, -1))
+    } else if (operatorPressed === true) {
+        num1 = parseFloat(num1.toString().slice(0,-1))
+    }
+    
+    console.log(currentValue)
+    console.log(num1)
+
+    bottomScreen.textContent = bottomScreen.textContent.toString().slice(0, -1)
+    topScreen.textContent = topScreen.textContent.toString().slice(0, -1)
+    operate(operator, currentValue, num1)
+})
 
 decimal.addEventListener('click', () => {
-    
-    if (operatorPressed === false) {
-        currentValue += decimal.innerHTML
+    currentValue = currentValue.toString()
+    num1 = num1.toString()
+
+    // if (!currentValue.includes('.')) {
+    //     currentValue += decimal.innerHTML
+    // } else if (!num1.includes('.')) {
+    //     num1 += decimal.innerHTML
+    // }
+
+    if (operatorPressed === false && !currentValue.includes('.')) {
+
+        currentValue = parseFloat(currentValue + decimal.innerHTML)
+        // currentValue = parseFloat(currentValue)
         bottomScreen.textContent += decimal.innerHTML
         topScreen.textContent += decimal.innerHTML
+
     } else if (operatorPressed === true) {
+        
         num1 += decimal.innerHTML
+        // num1 = parseFloat(num1)
         bottomScreen.textContent += decimal.innerHTML
         topScreen.textContent += decimal.innerHTML
-    }
-})
+
+    }})
 
 
 equalButton.addEventListener('click', () => {
@@ -74,6 +112,7 @@ equalButton.addEventListener('click', () => {
 
 })
 
+
 clearButton.addEventListener('click', () => {
     topScreen.innerHTML = ''
     bottomScreen.innerHTML = ''
@@ -81,6 +120,7 @@ clearButton.addEventListener('click', () => {
     currentValue = ''
     result = ''
     operatorPressed = false;
+
 })
 
 function roundNumber(num) {
@@ -110,6 +150,9 @@ function subtract(num1, num2) {
 
 
 function operate(operator, currentValue, num1) {
+    currentValue = parseFloat(currentValue)
+    num1 = parseFloat(num1)
+
 
     switch (operator) {
         case '+':
