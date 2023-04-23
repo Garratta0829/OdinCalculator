@@ -11,6 +11,7 @@ let num1 = ''
 let currentValue = ''
 let operatorPressed = false;
 let result
+let operatorSymbols = ['+', '-', '/', '*', '^']
 
 
 
@@ -38,17 +39,32 @@ operands.forEach(button => button.addEventListener('click', () => {
 }))
 
 
+
 operators.forEach(op => op.addEventListener('click', () => {
     // currentValue = currentValue.toString()
     // num1 = num1.toString()
 
     operator = op.innerHTML
 
-    if (!topScreen.textContent.endsWith(operator)) {
+    // if (!topScreen.textContent.endsWith(`+ `) ||
+    //     !topScreen.textContent.endsWith(`- `) ||
+    //     !topScreen.textContent.endsWith(`/ `) ||
+    //     !topScreen.textContent.endsWith(`* `) ||
+    //     !topScreen.textContent.endsWith(`^ `) ||
+    //     ) {
+    //     topScreen.textContent += ' ' + operator + ' '
+    // }
+
+    // if (!topScreen.textContent.endsWith(`+ `)) {
+    //     topScreen.textContent += ' ' + operator + ' '
+    // } else if (!topScreen.textContent.endsWith(`- `)) {
+    //     topScreen.textContent += ' ' + operator + ' '
+    // }
+
+   if (!topScreen.textContent.endsWith(`${operator} `)) {
         topScreen.textContent += ' ' + operator + ' '
     }
-
-
+   
     if (result != undefined) {
         bottomScreen.textContent = roundNumber(result)
         currentValue = result
@@ -78,26 +94,19 @@ backspace.addEventListener('click', () => {
 })
 
 decimal.addEventListener('click', () => {
+    
     currentValue = currentValue.toString()
     num1 = num1.toString()
 
-    // if (!currentValue.includes('.')) {
-    //     currentValue += decimal.innerHTML
-    // } else if (!num1.includes('.')) {
-    //     num1 += decimal.innerHTML
-    // }
+    if (operatorPressed === false && !currentValue.includes(`.`)) {
 
-    if (operatorPressed === false && !currentValue.includes('.')) {
-
-        currentValue = parseFloat(currentValue + decimal.innerHTML)
-        // currentValue = parseFloat(currentValue)
+        currentValue += decimal.innerHTML
         bottomScreen.textContent += decimal.innerHTML
         topScreen.textContent += decimal.innerHTML
 
-    } else if (operatorPressed === true) {
+    } else if (operatorPressed === true && !num1.includes(`.`)) {
         
         num1 += decimal.innerHTML
-        // num1 = parseFloat(num1)
         bottomScreen.textContent += decimal.innerHTML
         topScreen.textContent += decimal.innerHTML
 
@@ -125,34 +134,12 @@ clearButton.addEventListener('click', () => {
 
 function roundNumber(num) {
     return Math.round(num * 10000) / 10000
+
 }
-
-
-function add(num1, num2) {
-    // console.log(a + b) 
-    console.log(num1 + num2)
-}
-
-function divide(num1,num2) {
-    // console.log(a - b)
-    return parseInt(num1) / parseInt(num2)
-}
-
-function multiply(num1, num2) {
-    // console.log(a * b)
-    return num1 * num2
-}
-
-function subtract(num1, num2) {
-    // console.log(a - b) 
-    bottomScreen.innerHTML = num1 - num2
-}
-
 
 function operate(operator, currentValue, num1) {
     currentValue = parseFloat(currentValue)
     num1 = parseFloat(num1)
-
 
     switch (operator) {
         case '+':
