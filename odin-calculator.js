@@ -12,6 +12,7 @@ let currentValue = ''
 let operatorPressed = false;
 let result
 let operatorSymbols = ['+', '-', '/', '*', '^']
+let currentValueArray
 
 
 
@@ -39,27 +40,10 @@ operands.forEach(button => button.addEventListener('click', () => {
 }))
 
 
-
 operators.forEach(op => op.addEventListener('click', () => {
-    // currentValue = currentValue.toString()
-    // num1 = num1.toString()
+ 
 
     operator = op.innerHTML
-
-    // if (!topScreen.textContent.endsWith(`+ `) ||
-    //     !topScreen.textContent.endsWith(`- `) ||
-    //     !topScreen.textContent.endsWith(`/ `) ||
-    //     !topScreen.textContent.endsWith(`* `) ||
-    //     !topScreen.textContent.endsWith(`^ `) ||
-    //     ) {
-    //     topScreen.textContent += ' ' + operator + ' '
-    // }
-
-    // if (!topScreen.textContent.endsWith(`+ `)) {
-    //     topScreen.textContent += ' ' + operator + ' '
-    // } else if (!topScreen.textContent.endsWith(`- `)) {
-    //     topScreen.textContent += ' ' + operator + ' '
-    // }
 
    if (!topScreen.textContent.endsWith(`${operator} `)) {
         topScreen.textContent += ' ' + operator + ' '
@@ -71,18 +55,19 @@ operators.forEach(op => op.addEventListener('click', () => {
     }
     
     operatorPressed = true
-    // operator = op.innerHTML
     // topScreen.textContent += ' ' + operator + ' '
     num1 = ''
     
 }))
 
+
 backspace.addEventListener('click', () => {
 
     if (operatorPressed === false) {
-        currentValue = parseFloat(currentValue.toString().slice(0, -1))
+        currentValue = currentValue.toString().split('').slice(0,-1).join('')
+        // console.log(currentValue)
     } else if (operatorPressed === true) {
-        num1 = parseFloat(num1.toString().slice(0,-1))
+        num1 = num1.toString().split('').slice(0,-1).join('')
     }
     
     console.log(currentValue)
@@ -92,6 +77,7 @@ backspace.addEventListener('click', () => {
     topScreen.textContent = topScreen.textContent.toString().slice(0, -1)
     operate(operator, currentValue, num1)
 })
+
 
 decimal.addEventListener('click', () => {
     
@@ -121,15 +107,17 @@ equalButton.addEventListener('click', () => {
 
 })
 
-
 clearButton.addEventListener('click', () => {
     topScreen.innerHTML = ''
     bottomScreen.innerHTML = ''
+    operatorPressed = false;
     num1 = ''
     currentValue = ''
     result = ''
-    operatorPressed = false;
-
+    console.log(currentValue)
+    console.log(num1)
+    console.log(result)
+    
 })
 
 function roundNumber(num) {
