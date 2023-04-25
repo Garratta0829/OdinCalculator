@@ -10,15 +10,15 @@ let operator
 let num1 = ''
 let currentValue = ''
 let operatorPressed = false;
-let operatorClicked = false;
 let result
 
 
 
 operands.forEach(button => button.addEventListener('click', () => {
-    
+    numberPressed = true
+
     if (operatorPressed === false) {
-    
+        
         currentValue += button.innerHTML
         currentValue = parseFloat(currentValue)
         bottomScreen.textContent += button.innerHTML
@@ -32,51 +32,32 @@ operands.forEach(button => button.addEventListener('click', () => {
         num1 = parseFloat(num1)
         operate(operator, currentValue, num1)
         console.log(num1)
-        operatorClicked === false
         bottomScreen.textContent += num1
         topScreen.textContent += button.innerHTML
+        operators.forEach(function (op1) {
+            op1.style.pointerEvents = 'All'
+        })
     }
 
 }))
 
 
 operators.forEach(op => op.addEventListener('click', () => {
- 
     
     operator = op.innerHTML
-    
 
-    console.log(currentValue)
-    console.log(num1)
-    console.log(result)
-
-    // if (operatorClicked === false) {
-    //     topScreen.textContent += ' ' + operator + ' '
-    //     operatorClicked = true
-    // }
-
-    if (!topScreen.textContent.endsWith(`${operator} `)) {
-        
-        topScreen.textContent += ' ' + operator + ' '
-    }
-
-    // || !topScreen.textContent.endsWith(`- `)
-
-    // if (!topScreen.textContent.endsWith(`+ `)) {
-    //     topScreen.textContent += ' ' + operator + ' '
-    // }
-   
-   
-    if (result != undefined) {
+   if (result != undefined) {
         bottomScreen.textContent = roundNumber(result)
         currentValue = result
     }
 
-    operatorClicked = true
     operatorPressed = true
-    // topScreen.textContent += ' ' + operator + ' '
+    topScreen.textContent += ' ' + operator + ' '
     num1 = ''
 
+    operators.forEach(function (op1) {
+        op1.style.pointerEvents = 'none'
+    })
     
 }))
 
