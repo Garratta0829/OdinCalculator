@@ -10,8 +10,8 @@ let operator
 let num1 = ''
 let currentValue = ''
 let operatorPressed = false;
+let operatorClicked = false;
 let result
-
 
 
 
@@ -32,6 +32,7 @@ operands.forEach(button => button.addEventListener('click', () => {
         num1 = parseFloat(num1)
         operate(operator, currentValue, num1)
         console.log(num1)
+        operatorClicked === false
         bottomScreen.textContent += num1
         topScreen.textContent += button.innerHTML
     }
@@ -41,14 +42,21 @@ operands.forEach(button => button.addEventListener('click', () => {
 
 operators.forEach(op => op.addEventListener('click', () => {
  
-
+    
     operator = op.innerHTML
+    
 
     console.log(currentValue)
     console.log(num1)
     console.log(result)
 
+    // if (operatorClicked === false) {
+    //     topScreen.textContent += ' ' + operator + ' '
+    //     operatorClicked = true
+    // }
+
     if (!topScreen.textContent.endsWith(`${operator} `)) {
+        
         topScreen.textContent += ' ' + operator + ' '
     }
 
@@ -63,10 +71,12 @@ operators.forEach(op => op.addEventListener('click', () => {
         bottomScreen.textContent = roundNumber(result)
         currentValue = result
     }
-    
+
+    operatorClicked = true
     operatorPressed = true
     // topScreen.textContent += ' ' + operator + ' '
     num1 = ''
+
     
 }))
 
